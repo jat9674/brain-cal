@@ -1,0 +1,554 @@
+
+<html lang="en">
+
+   <head>
+        
+        <title>Javascript</title>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+ 
+ <style type="text/css">
+ body{
+background-image:url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQk9QCy6ggnQLSMVo77B5VA9ZEhEU20xDrPKxMh5BuneBuCYsUIzg');
+background-repeat:no-repeat;
+height:100%;
+background-size:cover;
+color:white;
+}
+div.well{
+  height: 250px;
+} 
+
+.Absolute-Center {
+  margin: auto;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+}
+            #name {
+			margin:50px;}
+            #namesecond {
+			margin:50px;
+			}
+			
+.Absolute-Center.is-Responsive {
+  width: 50%; 
+  height: 50%;
+  min-width: 200px;
+  max-width: 700px;
+  padding: 40px;
+}
+
+#logo-container{
+  margin: auto;
+  margin-bottom: 10px;
+  width:200px;
+  height:30px;
+ 
+}
+ .btn-group{
+ height:50px;
+ width:45px;
+ }
+ .sidenav {
+    height: 100%;
+    width: 0;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 225px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+#main {
+    transition: margin-left .5s;
+    padding: 16px;
+}
+
+@media not (min-width:240px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+ #Score{float:right;
+ display:none;
+ padding:40px;}
+ #life{
+ display:none;
+ float:right;
+ padding:40px;
+ }
+ #countdown{
+ float:right;
+ padding:40px;
+ }
+ .glyphicon{
+ color:red;
+ }
+ 
+</style>
+     <iframe style="display:none;" width="640" height="360" src="https://www.youtube.com/embed/2gm45F4csOY?rel=0&autoplay=1" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
+</head>
+<body>
+<!--<div id="countdown" style="display:none;">TIME REMAIN:</div>-->
+<div  id="Score">SCORE</div>
+<div id="life">LIFE<br><span id="life1" class="glyphicon glyphicon-heart"></span><span id="life2" class="glyphicon glyphicon-heart"></span><span id="life3" class="glyphicon glyphicon-heart"></span><span id="life4"  class="glyphicon glyphicon-heart"></span><span id="life5" class="glyphicon glyphicon-heart"></span></div>
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <a id="about" href="#" >AboutGAME</a>
+  <a  id="show" href="#" onclick="closeNav()">PLAY</a>
+  <a id="instruction" onclick="closeNav()" href="#">INSTRUCTION</a>
+  <a id ="max" href="#" onclick="closeNav()">MAXSCORE</a>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="Absolute-Center is-Responsive">
+     
+      
+         
+           <h1 id="quote" style="color:#1add2e; position:absolute;"><q>Math is the funniest thing of this World,until or unless you don't make fun of it</q></h1>
+                    
+      
+    </div>    
+  </div>
+  
+   <div class="container" id="gameover" style="display:none;">
+  <div class="row">
+    <div class="Absolute-Center is-Responsive">
+     
+      
+         
+           <h1 style="color:red; position:absolute;">GAME OVER</h1><br><br><br><h2 id="finalscore">YOUR SCORE:0</h2>
+                    
+      
+    </div>    
+  </div>  
+</div>
+ 
+     
+</div>
+  <div class="container" id="maxscore" style="display:none;">
+  <div class="row">
+    <div class="Absolute-Center is-Responsive">
+     
+      
+         
+           <h1 id="maximum" style="color:#ffd800; position:absolute;">MAXSCORE: 0</h1>
+                    
+      
+    </div>    
+  </div>  
+</div>
+
+   <div class="container" id="instruct" style="display:none;">
+  
+<div class="Absolute-Center is-Responsive">
+     <p style="color:#ffd800;position:absolute;float:right;clear:both;"><h3>1. Follow universal rule of arithematic calculations i.e.<a href="https://en.wikipedia.org/wiki/Order_of_operations" target="_blank" style="color:green;"> Order of Operations.</a></h3><br><h3>2. In case of <a href="https://en.wikipedia.org/wiki/Fraction_(mathematics)",target=_blank">improper fraction</a> roundup value according to <a href="https://calculus.subwiki.org/wiki/Greatest_integer_function" target="_blank">greatest integer function.</a> <strong style="color:red;">Ex: 17/11=1,37/17=2.etc.</strong></h3>
+</div>  
+</div>
+<div id="main">
+  <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; MENU</span>
+</div>
+<div class="container" id="hidden" style="display:none;">
+  <div class="row">
+    <div class="Absolute-Center is-Responsive">
+     
+      <div class="col-sm-12 col-md-10 col-md-offset-1">
+        <form action="" id="loginForm">
+          <div class="form-group input-group">
+           
+            solve this: <input id="input" class="form-control" type="text" name='input'  readonly="readonly"/>          
+          </div>
+          <div class="form-group input-group">
+ 
+           your answer: <input id="output" class="form-control" type="text" name='output' placeholder=""/>     
+          </div>
+		  <p id ="correct"></p>
+ 
+          <div class="form-group">
+            <button id="check" type="button" class="btn btn-def btn-primary">submit</button>
+          </div>
+          
+        </form>        
+      </div>  
+    </div>    
+  </div>
+     
+</div>
+ 
+		   
+        <script type="text/javascript">
+	var maxscore=0;	
+	var universalcounter=0;
+	var n = 0;
+var count=0;
+var score=0;
+/*var seconds=15;*/
+$(document).ready(function(){
+$("#about").click(function(){
+score=0;
+$("#quote").show(1500);
+$("#instruct").hide();
+        $("#hidden").hide();
+		$("#Score").hide();
+		$("#life").hide();
+	    $("#maxscore").hide();
+	    $("#gameover").hide();
+		 	document.getElementById("Score").innerHTML="SCORE : 0" ;
+					score=0;
+					count=0;
+					unicount=0;
+					n=2;
+      // $("#countdown").show(2500);
+					 document.getElementById("life5").style.color="red";
+					 	 document.getElementById("life4").style.color="red";
+						 	 document.getElementById("life3").style.color="red";
+							 	 document.getElementById("life2").style.color="red";
+								 	 document.getElementById("life1").style.color="red";
+});
+});
+	 $(document).ready(function(){
+    $("#show").click(function(){
+	
+	/*seconds=10;
+	universalcounter=universalcounter+1;
+	setInterval( function(){
+	 var remainingSeconds = seconds % 60;
+    if (remainingSeconds < 10) {
+        remainingSeconds = "0"
+		+ remainingSeconds;  
+		document.getElementById("countdown").style.color="red";
+    }
+    document.getElementById('countdown').innerHTML = "TIME REMAINING:" + remainingSeconds;
+    if (seconds == 0) {
+	  $("#gameover").show(1500);
+	   $("#hidden").hide(2000);
+		$("#Score").hide(2000);
+		$("#life").hide(2000);
+		$("#quote").hide(2500);
+	  document.getElementById("life1").style.color="red";
+		  document.getElementById("life2").style.color="red";
+		   document.getElementById("life3").style.color="red";
+		    document.getElementById("life4").style.color="red";
+			 document.getElementById("life5").style.color="red";
+ score=0;
+ unicount=0;
+ n=2;
+ $("#countdown").hide(2000);
+			 	document.getElementById("Score").innerHTML="SCORE : 0" ;
+				clearinterval(seconds);
+    } 
+	else {
+		
+        seconds--;
+    }
+	},1000*universalcounter);*/
+				 	document.getElementById("Score").innerHTML="SCORE : 0" ;
+					score=0;
+					count=0;
+					unicount=0;
+					n=2;
+      // $("#countdown").show(2500);
+					 document.getElementById("life5").style.color="red";
+					 	 document.getElementById("life4").style.color="red";
+						 	 document.getElementById("life3").style.color="red";
+							 	 document.getElementById("life2").style.color="red";
+								 	 document.getElementById("life1").style.color="red";
+	$("#gameover").hide();
+        $("#hidden").show(2500);
+		$("#Score").show(2500);
+		$("#life").show(2500);
+		$("#quote").hide(2000);
+		$("#instruct").hide(2000);
+		$("#maxscore").hide();
+	 //document.getElementById("countdown").style.color="white" ;
+		
+    });
+});
+$(document).ready(function(){
+
+$("#instruction").click(function(){
+$("#instruct").show(2000);
+        $("#hidden").hide(2500);
+		$("#Score").hide(2500);
+		$("#life").hide(2500);
+		$("#quote").hide(2000);
+	    $("#maxscore").hide();
+	    $("#gameover").hide();
+		 	document.getElementById("Score").innerHTML="SCORE : 0" ;
+					score=0;
+					count=0;
+					unicount=0;
+					n=2;
+      // $("#countdown").show(2500);
+					 document.getElementById("life5").style.color="red";
+					 	 document.getElementById("life4").style.color="red";
+						 	 document.getElementById("life3").style.color="red";
+							 	 document.getElementById("life2").style.color="red";
+								 	 document.getElementById("life1").style.color="red";
+				//$("#countdown").hide(2500);
+				
+					// document.getElementById("countdown").style.color="white" ;
+});
+});
+$(document).ready(function(){
+$("#max").click(function(){
+$("#maxscore").show();
+$("#gameover").hide();
+        $("#hidden").hide(2500);
+		$("#Score").hide(2500);
+		$("#life").hide(2500);
+		$("#quote").hide(2000);
+		$("#instruct").hide(2000);
+		 	document.getElementById("Score").innerHTML="SCORE : 0" ;
+					score=0;
+					count=0;
+					unicount=0;
+					n=2;
+      // $("#countdown").show(2500);
+					 document.getElementById("life5").style.color="red";
+					 	 document.getElementById("life4").style.color="red";
+						 	 document.getElementById("life3").style.color="red";
+							 	 document.getElementById("life2").style.color="red";
+								 	 document.getElementById("life1").style.color="red";
+		//$("#countdown").hide(2500);
+		
+		//document.getElementById("countdown").style.color="white" ;
+		});
+});
+function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+    document.getElementById("main").style.marginLeft = "250px";
+}
+
+function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+    document.getElementById("main").style.marginLeft= "0";
+}
+   document.getElementById("hidden").style.display="none";
+
+var unicount=0;
+ 
+
+function randomNumberRange(min, max) {
+return Math.floor(Math.random() * (max - min) + min);
+}
+var a = '' ;  
+var x = ['*','-','+'];
+n=2; 
+for(var i=0;i<n;i++){
+    if(i !== n-1){
+        var n1 = randomNumberRange(1, 40);
+        var m = randomNumberRange(0, x.length);
+        var str = x[m];
+        a += n1;
+        a +=' '+str+' ';
+    }else{
+	 var n1 = randomNumberRange(1, 40);
+        a += n1;
+    }  
+	document.getElementById("input").value=a;
+}
+	 document.getElementById("check").onclick=function(){
+seconds=15;
+    if(Math.floor(eval(a))==document.getElementById("output").value)
+	{
+	unicount=unicount+1;
+	
+	if(unicount<4)
+	{	 
+	
+	score+=50;
+ x = ['*','-','+','/'];
+n=2;
+}
+ 
+	if(unicount>=4&&unicount<10)
+	{ 
+	score+=150;
+	x = ['*','-','+','/'];
+n=3;
+	}
+	if(unicount<14&&unicount>=10){
+		 
+ x = ['*','-','+','/'];
+n=4;
+	score+=500;
+	}
+	if(unicount>14){
+		 
+ x = ['*','-','+'];
+n=5;
+	score+=1000;
+	}
+	 if(maxscore<score)
+	 {
+			 maxscore=score;
+			 document.getElementById("maximum").innerHTML="MAXSCORE : " + score;
+			 }
+	document.getElementById("Score").innerHTML="SCORE:" + score;
+	document.getElementById("finalscore").innerHTML=document.getElementById("Score").innerHTML;
+ 	a='';
+	for(var i=0;i<n;i++){
+    if(i !== n-1){
+        var n1 = randomNumberRange(1, 40);
+        var m = randomNumberRange(0, x.length);
+        var str = x[m];
+        a += n1;
+        a +=' '+str+' ';
+    }else{
+	 var n1 = randomNumberRange(1, 40);
+        a += n1;
+    }  
+	document.getElementById("input").value=a;
+	document.getElementById("output").value="";
+}
+}
+	else{
+	
+ count=count+1;
+  if(document.getElementById("output").value=="")
+	 {
+	
+	 if(count%5==1)
+	 {
+	  alert("skip");
+	 document.getElementById("life5").style.color="white";
+	 }
+	  if(count%5==2)
+	 {
+	  alert("skip");
+	 document.getElementById("life4").style.color="white";
+	 }
+	  if(count%5==3)
+	 {
+	  alert("skip");
+	 document.getElementById("life3").style.color="white";
+	 }
+	  if(count%5==4)
+	 {
+	  alert("skip");
+	 document.getElementById("life2").style.color="white";
+	 }
+	  
+	 if(count%5==0)
+	 {
+	 $("#gameover").show(1500);
+	   $("#hidden").hide(2000);
+		$("#Score").hide(2000);
+		$("#life").hide(2000);
+		$("#quote").hide(2500);
+	  document.getElementById("life1").style.color="red";
+		  document.getElementById("life2").style.color="red";
+		   document.getElementById("life3").style.color="red";
+		    document.getElementById("life4").style.color="red";
+			 document.getElementById("life5").style.color="red";
+ score=0;
+ unicount=0;
+ n=2;
+ //$("#countdown").hide(2000);
+			 	document.getElementById("Score").innerHTML="SCORE : 0" ;
+	 
+	 }
+	 
+	 
+	 
+	 }
+	 else{
+	 if(count%5==1)
+	 {
+	 document.getElementById("life5").style.color="white";
+	 alert("Wrong answer");
+	 }
+	  if(count%5==2)
+	 {
+	 document.getElementById("life4").style.color="white";
+	 alert("Wrong answer");
+	 }
+	  if(count%5==3)
+	 {
+	 document.getElementById("life3").style.color="white";
+	 alert("Wrong answer");
+	 }
+	  if(count%5==4)
+	 {
+	 document.getElementById("life2").style.color="white";
+	 alert("Wrong answer");
+	 }
+	  
+	 if(count%5==0)
+	 {
+ $("#gameover").show(1500);
+	   $("#hidden").hide(2000);
+		$("#Score").hide(2000);
+		$("#life").hide(2000);
+		$("#quote").hide(2500);
+	  document.getElementById("life1").style.color="red";
+		  document.getElementById("life2").style.color="red";
+		   document.getElementById("life3").style.color="red";
+		    document.getElementById("life4").style.color="red";
+			 document.getElementById("life5").style.color="red";
+			  
+			 	document.getElementById("Score").innerHTML="SCORE : 0"; 
+	  score=0;
+	  unicount=0;
+	  n=2;
+	 // $("#countdown").hide(2000);
+	 }
+	 }
+ 
+	document.getElementById("correct").innerHTML="CORRECT ANSWER :" + eval(a);
+		$('#correct').delay(500).show(100);
+	a='';
+	for(var i=0;i<n;i++){
+    if(i !== n-1){
+        var n1 = randomNumberRange(1, 40);
+        var m = randomNumberRange(0, x.length);
+        var str = x[m];
+        a += n1;
+        a +=' '+str+' ';
+    }
+	else{
+	 var n1 = randomNumberRange(1, 40);
+        a += n1;
+    }  
+	document.getElementById("input").value=a;
+		document.getElementById("output").value="";
+		if(document.getElementById("output").value=="")
+		{ 
+		$('#correct').delay(500).hide(100);
+		}
+		 
+}
+	}
+	}
+ </script>
+        
+    </body>
+
+</html>
